@@ -1,16 +1,21 @@
 CREATE TABLE Companies(
 id SERIAL PRIMARY KEY
-name TEXT NOT NULL
+name TEXT NOT NULL UNIQUE
 );
 
 CREATE TABLE Contacts(
 id SERIAL PRIMARY KEY, 
-name TEXT NOT NULL
-email TEXT UNIQUE
+first_name TEXT NOT NULL,
+last_name TEXT NOT NULL,
+email TEXT NOT NULL UNIQUE,
+phone TEXT,
 company_id INT REFERENCES Companies(id)
 );
 
 CREATE TABLE Deals(
+id SERIAL PRIMARY KEY,
+Title TEXT NOT NULL,
+
 name Company_name
 Amount INT NOT NULL
 Date INT NOT NULL
@@ -20,6 +25,8 @@ Stage STRING NOT NULL
 Select c.name, d.stage, d.amount
   FROM Deals d JOIN contacts c ON c.id = d.contact_id
   Where d.stage = 'proposal'
+
+
 
   
   
