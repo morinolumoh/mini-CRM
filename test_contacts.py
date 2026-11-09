@@ -24,3 +24,19 @@ def test_duplicate_email_rejected(client):
 
 # TODO (Week 1): write tests FIRST for get/patch/delete, watch them fail, then
 # implement the endpoints until they pass. This is test-driven development.
+def test_get_contact(client):
+    payload = {"first_name": "Ada", "last_name": "Lovelace", "email": "Ada@example.com""}
+    client.get("/contacts", json=payload)
+    res= client.get("/contacts", json=payload)
+    assert res.status_code = 409
+    
+
+.github/workflows/ci.yml
+.gitignore
+README.md
+docker-compose.yml
+.env.example
+backend/   (app/, tests/, requirements.txt, pytest.ini)
+db/        (schema.sql, seed.sql)
+docs/      (ROADMAP.md, LEARNING_LOG.md)
+
